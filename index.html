@@ -19,12 +19,14 @@ me.device.onReady(function () {
     // add a font text display object
     me.game.world.addChild(new me.Text(609, 281, {
         font: "Arial",
-        size: 160,
+        size: 30,
         fillStyle: "#FFFFFF",
         textBaseline : "middle",
         textAlign : "center",
         text : "Hello World !"
     }));
+  
+    me.game.world.addChild(new me.Sprite(400, 200, {image: 'bat.svg', framewidth: 200, frameheight: 100}))
 });
   
 </script>
