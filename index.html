@@ -1,36 +1,40 @@
 <!DOCTYPE html>
 <html>
 
-<div id='body'>
-<img src="https://raw.githack.com/nagzpy/brick_breaker/main/bat.svg" width=1 height=1 id='img1'>
-<script defer type='module'>
-import * as me from "https://cdn.jsdelivr.net/npm/melonjs@13.4.0/dist/melonjs.module.js";
-  
-me.device.onReady(function () {
-    // initialize the display canvas once the device/browser is ready
-    if (!me.video.init(1218, 562, {parent : "screen", scale : "auto"})) {
-        alert("Your browser does not support HTML5 canvas.");
-        return;
+<div id='main'>
+
+<script src="//cdn.jsdelivr.net/npm/phaser@3.55.2/dist/phaser.js"></script>
+
+<script>
+  var config = {
+    type: Phaser.AUTO,
+    width: 800,
+    height: 600,
+    physics: {
+        default: 'arcade',
+        arcade: {
+            gravity: { y: 20 }
+        }
+    },
+    scene: {
+        preload: preload,
+        create: create
     }
+  var game = new Phaser.Game(config);
+  function preload(){
+    pass
+  }
 
-    // add a gray background to the default Stage
-    me.game.world.addChild(new me.ColorLayer("background", "#202020"));
-
-    // add a font text display object
-    me.game.world.addChild(new me.Text(609, 281, {
-        font: "Arial",
-        size: 30,
-        fillStyle: "#FFFFFF",
-        textBaseline : "middle",
-        textAlign : "center",
-        text : "Hello World !"
-    }));
-  
-    me.game.world.addChild(new me.Sprite(400, 200, {image: me.loader.getImage('img1'), framewidth: 200, frameheight: 100}))
-});
-  
+  function create(){
+    this.add.rectangle(200,200,200,200,#eb7734)
+  }
+    
+};
 </script>
+
+
 
 </div>
 
-</html>
+
+<html>
