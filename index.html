@@ -9,8 +9,8 @@
       var config = {
         type: Phaser.AUTO,
         parent: 'phaser-example',
-        width: 800,
-        height: 600,
+        width: window.screen.width,
+        height: window.screen.height,
         backgroundColor: '#ffffff',
         physics: {
           default: 'arcade',
@@ -39,6 +39,7 @@
         
 
         this.bat = this.add.rectangle(250, 450, 200, 25, '#000000');
+        this.physics.world.setBounds(0,0,window.screen.width, window.screen.height, true, true, true, true) 
         this.bat.setCollideWorldBounds = true
         this.bricks = this.add.group()
         this.brick_x = 0
@@ -46,7 +47,7 @@
         for (var i = 0; i<49; i++){
         this.bricks.add(this.add.rectangle(this.brick_x, this.brick_y, 50, 25, '#000000'))
         this.brick_x = this.brick_x + 60
-        if (this.brick_x == 740){
+        if (this.brick_x == window.screen.width - 20){
         this.brick_x = 0 
         this.brick_y = 35
         }
