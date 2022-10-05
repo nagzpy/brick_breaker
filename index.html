@@ -4,14 +4,15 @@
   <div id='main'>
 <canvas id='canvas_1' width=800 height=600></canvas>
     <script>
-	    var canvas = document.getElementById('canvas_1')
+	   window.onload = function(){
+            var canvas = document.getElementById('canvas_1')
 	    var ctx = canvas.getContext('2d')
 
 	    ctx.beginPath();
 	    ctx.rect(400, 700, 200, 25);
 	    ctx.fillStyle = 'red';
 	    ctx.fill();
-    
+	   }
     </script>
 
 
