@@ -2,78 +2,16 @@
 <html>
 
   <div id='main'>
-
-    <script src="https://cdn.jsdelivr.net/npm/phaser@3.55.2/dist/phaser.js"></script>
-
+<canvas id='canvas_1' width=800 height=600></canvas>
     <script>
-      var config = {
-        type: Phaser.AUTO,
-        parent: 'phaser-example',
-        width: window.screen.width,
-        height: window.screen.height,
-        backgroundColor: '#ffffff',
-        physics: {
-          default: 'arcade',
-          arcade: {
-            gravity: {
-              y: 200
-            }
-          }
-        },
-        scene: {
-          preload: preload,
-          create: create,
-          update: update
-        }
-      };
+	    var canvas = document.getElementById('canvas_1')
+	    var ctx = c.getContext('2d')
 
-      var game = new Phaser.Game(config);
-
-      function preload() {
-			
-      }
-
-      function create() {
-      this.keys = this.input.keyboard.addKeys({left: Phaser.Input.Keyboard.KeyCodes.LEFT,right: Phaser.Input.Keyboard.KeyCodes.RIGHT})
-       
-        
-
-        this.bat = this.add.rectangle(250, 450, 200, 25, '#000000');
-        this.physics.world.setBounds(0,0,window.screen.width, window.screen.height, true, true, true, true) 
-        this.bat.setCollideWorldBounds = true
-        this.bricks = this.add.group()
-        this.brick_x = 0
-        this.brick_y = 0
-        for (var i = 0; i<49; i++){
-        this.bricks.add(this.add.rectangle(this.brick_x, this.brick_y, 50, 25, '#000000'))
-        this.brick_x = this.brick_x + 60
-        if (this.brick_x == window.screen.width - 20){
-        this.brick_x = 0 
-        this.brick_y = 35
-        }
-        
-        }
-        
-        
-        
-        
-        
-        
-        
-        
-        
-
-      }
-      
-      function update(){
-      if (this.keys.left.isDown){
-        this.bat.x = this.bat.x-10
-        }
-      else if (this.keys.right.isDown){
-      	this.bat.x = this.bat.x + 10
-      }
-      }
-
+	    ctx.beginPath();
+	    ctx.rect(400, 700, 200, 25);
+	    ctx.fillStyle = 'red';
+	    ctx.fill();
+    
     </script>
 
 
