@@ -1,92 +1,83 @@
 <!DOCTYPE html>
 <html>
 
-<div id='main'>
+  <div id='main'>
 
-<script src="https://cdn.jsdelivr.net/npm/phaser@3.55.2/dist/phaser.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/phaser@3.55.2/dist/phaser.js"></script>
 
-<script>
-  var config = {
-    type: Phaser.AUTO,
-    parent: 'phaser-example',
-    width: 800,
-    height: 600,
-    physics:{
-    default: 'arcade',
-    arcade:{
-      gravity: {y:200}
-    }
-    },
-    scene: {
-        preload: preload,
-        create: create
-    }
-};
+    <script>
+      var config = {
+        type: Phaser.AUTO,
+        parent: 'phaser-example',
+        width: 800,
+        height: 600,
+        backgroundColor: '#ffffff',
+        physics: {
+          default: 'arcade',
+          arcade: {
+            gravity: {
+              y: 200
+            }
+          }
+        },
+        scene: {
+          preload: preload,
+          create: create,
+          update: update
+        }
+      };
 
-var game = new Phaser.Game(config);
+      var game = new Phaser.Game(config);
 
-function preload ()
-{
-    this.load.image('bg', 'assets/skies/background1.png');
-}
+      function preload() {
+			
+      }
 
-function create ()
-{
-    this.add.image(400, 300, 'bg');
+      function create() {
+      this.keys = this.input.keyboard.addKeys({left: Phaser.Input.Keyboard.KeyCodes.LEFT,right: Phaser.Input.Keyboard.KeyCodes.RIGHT})
+       
+        
 
-    var r1 = this.add.rectangle(200, 200, 148, 148, 0x6666ff);
+        this.bat = this.add.rectangle(250, 450, 200, 25, '#000000');
+        this.bat.setCollideWorldBounds = true
+        this.bricks = this.add.group()
+        this.brick_x = 0
+        this.brick_y = 0
+        for (var i = 0; i<49; i++){
+        this.bricks.add(this.add.rectangle(this.brick_x, this.brick_y, 50, 25, '#000000'))
+        this.brick_x = this.brick_x + 60
+        if (this.brick_x == 740){
+        this.brick_x = 0 
+        this.brick_y = 35
+        }
+        
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+        
 
-    var r2 = this.add.rectangle(400, 200, 148, 148, 0x9966ff);
+      }
+      
+      function update(){
+      if (this.keys.left.isDown){
+        this.bat.x = this.bat.x-10
+        }
+      else if (this.keys.right.isDown){
+      	this.bat.x = this.bat.x + 10
+      }
+      }
 
-    r2.setStrokeStyle(4, 0xefc53f);
-
-    var r3 = this.add.rectangle(600, 200, 148, 148);
-
-    r3.setStrokeStyle(2, 0x1a65ac);
-
-    var r4 = this.add.rectangle(200, 400, 148, 148, 0xff6699);
-
-    var r5 = this.add.rectangle(400, 400, 148, 148, 0xff33cc);
-
-    var r6 = this.add.rectangle(600, 400, 148, 148, 0xff66ff);
-
-    this.tweens.add({
-
-        targets: r4,
-        scaleX: 0.25,
-        scaleY: 0.5,
-        yoyo: true,
-        repeat: -1,
-        ease: 'Sine.easeInOut'
-
-    });
-
-    this.tweens.add({
-
-        targets: r5,
-        alpha: 0.2,
-        yoyo: true,
-        repeat: -1,
-        ease: 'Sine.easeInOut'
-
-    });
-
-    this.tweens.add({
-
-        targets: r6,
-        angle: 90,
-        yoyo: true,
-        repeat: -1,
-        ease: 'Sine.easeInOut'
-
-    });
-}
-    
-</script>
+    </script>
 
 
 
-</div>
+  </div>
 
 
-<html>
+</html>
