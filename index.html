@@ -8,7 +8,7 @@ var canvas = document.getElementById('can')
 var ctx = canvas.getContext('2d')
 var x1 = 0
 var x = 200
-
+var y1 = 10
 
 
 var ball_pos_y = 300
@@ -22,6 +22,11 @@ ctx.fillStyle = 'black'
 ctx.fillRect(x,550,200,25)
 ctx.fillRect(300, ball_pos_y, 20, 20)
 
+if (ball_pos_y == 550){
+
+var y1  = -10
+
+}
 
 },15)
 
