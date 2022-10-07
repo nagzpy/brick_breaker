@@ -1,51 +1,58 @@
 <!DOCTYPE html>
 <html>
 
-<script type='module'>
-import * as me from "https://cdn.jsdelivr.net/npm/melonjs@13.4.0/dist/melonjs.module.js";
 
-me.device.onReady(function () {
-    // initialize the display canvas once the device/browser is ready
-    if (!me.video.init(800, 600, {parent : "screen", scale : "auto"})) {
-        alert("Your browser does not support HTML5 canvas.");
-        return;
-    }
-    
-    class rectangle extends me.Renderable{
-    	constructor(){ 
-      super(200,200,150,25);
-      this.x_pos = this.pos.x
-      
-      }
-      
-      update(dt){
-      	if (me.input.isKeyPressed('left')){
-        
-        this.pos.x = this.x_pos - 10;
-        console.log(this.pos.x)
-        return this.pos.x
-        }
-       
-      }
-      draw(renderer){
-      	renderer.setColor('#FFFFFF');
-        renderer.fillRect(this.pos.x, this.pos.y, this.width, this.height)
-        
-        
-        
-      }
-    }
-    
-    
-    
-    
+<canvas id='can' width='800' height='600'></canvas>
+<script>
+var canvas = document.getElementById('can')
+var ctx = canvas.getContext('2d')
+var x1 = 0
+var x = 200
 
-   
-   
-    me.game.world.addChild(new rectangle());
-});
+
+
+var ball_pos_y = 300
+
+setInterval(function(){
+x = x + x1
+ball_pos_y = ball_pos_y + 10
+ctx.fillStyle = 'white'
+ctx.fillRect(0,0,800,800)
+ctx.fillStyle = 'black'
+ctx.fillRect(x,550,200,25)
+ctx.fillRect(300, ball_pos_y, 20, 20)
+
+
+},15)
+
+
+
+
+
+
+
+addEventListener('keydown', function(move){
+if (move.key == 'a'){
+x1 = -10
+}
+
+if (move.key == 'd'){
+
+x1=10
+}
+})
+addEventListener('keyup', function(move){
+if (move.key == 'a'){
+x1 = 0
+}
+
+if (move.key == 'd'){
+
+x1=0
+}
+})
+
 </script>
-
 <body>
 
 </body>
