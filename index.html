@@ -1,21 +1,53 @@
 <!DOCTYPE html>
 <html>
 
-  <div id='main'>
-<canvas id='canvas_1' width=800 height=600></canvas>
-    <script>
-	   function exec(){
-            var canvas = document.getElementById('canvas_1')
-	    var ctx = canvas.getContext('2d')
+<script type='module'>
+import * as me from "https://cdn.jsdelivr.net/npm/melonjs@13.4.0/dist/melonjs.module.js";
 
-	    ctx.fillStyle = "green";
-	    ctx.fillRect(10, 10, 150, 100);
-	   }
-    </script>
+me.device.onReady(function () {
+    // initialize the display canvas once the device/browser is ready
+    if (!me.video.init(800, 600, {parent : "screen", scale : "auto"})) {
+        alert("Your browser does not support HTML5 canvas.");
+        return;
+    }
+    
+    class rectangle extends me.Renderable{
+    	constructor(){ 
+      super(200,200,150,25);
+      this.x_pos = this.pos.x
+      
+      }
+      
+      update(dt){
+      	if (me.input.isKeyPressed('left')){
+        
+        this.pos.x = this.x_pos - 10;
+        console.log(this.pos.x)
+        return this.pos.x
+        }
+       
+      }
+      draw(renderer){
+      	renderer.setColor('#FFFFFF');
+        renderer.fillRect(this.pos.x, this.pos.y, this.width, this.height)
+        
+        
+        
+      }
+    }
+    
+    
+    
+    
 
+   
+   
+    me.game.world.addChild(new rectangle());
+});
+</script>
 
+<body>
 
-  </div onload='exec()'>
-
-
+</body>
 </html>
+
